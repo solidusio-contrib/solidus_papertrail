@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th><%= Spree.t(:payment_state) %></th>
+      <th><%= Spree.t(:payment_method) %></th>
+      <th><%= Spree.t(:updated_at) %></th>
+      <th><%= Spree.t(:user) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_versions.each do |payment| %>
+      <tr>
+        <td><%= payment.state %></td>
+        <td><%= payment_method_name(payment) %></td>
+        <td><%= l payment.updated_at %></td>
+        <td><%= payment.who %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

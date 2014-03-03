@@ -1,0 +1,5 @@
+es:
+  spree:
+    payment_history: Historial de Pago
+    order_history: Historial de la Orden
+    shipment_history: Historial del Envío
