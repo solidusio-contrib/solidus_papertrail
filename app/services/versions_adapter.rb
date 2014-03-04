@@ -4,12 +4,15 @@ class VersionsAdapter
     collection = []
     elements.each do |element|
       if element.respond_to?(:versions)
-        element.versions.each do |version|
+        element.versions.order(created_at: :asc).each do |version|
           unless version.object.nil?
             prototype = YamlAdapter.create(version.object, element.class)
             prototype.who = version.originator.to_i
-            collection << prototype
+          else
+            prototype = version.item
+            prototype.who = version.terminator.to_i
           end
+          collection << prototype
         end
       end
     end
