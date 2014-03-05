@@ -6,10 +6,12 @@ Spree::Admin::OrdersController.class_eval do
   end
 
   def payment_versions
-    @payment_versions = VersionsAdapter.create(@order.payments.order(updated_at: :desc))
+    payments = @order.payments.order(updated_at: :asc)
+    @payment_versions = VersionsAdapter.create(payments)
   end
 
   def shipment_versions
-    
+    shipments = @order.shipments.order(updated_at: :desc)
+    @shipment_versions = VersionsAdapter.create(shipments)
   end
 end

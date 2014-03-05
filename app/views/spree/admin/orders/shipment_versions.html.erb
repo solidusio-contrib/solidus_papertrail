@@ -1,0 +1,31 @@
+<% content_for :page_actions do %>  
+  <li><%= button_link_to Spree.t(:back), spree.edit_admin_order_path(@order), :icon => 'icon-arrow-left' %></li>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/order_tabs', locals: { current: 'Shipment History'} %>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Spree.t(:identifier) %></th>
+      <th><%= Spree.t(:tracking_number) %></th>
+      <th><%= Spree.t(:shipment_state) %></th>
+      <th><%= Spree.t(:shipping_method) %></th>
+      <th><%= Spree.t(:updated_at) %></th>
+      <th><%= Spree.t(:user) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shipment_versions.each do |shipment| %>
+      <tr>
+        <td><%= shipment.id %></td>
+        <td><%= shipment.tracking %></td>
+        <td><%= Spree.t(shipment.state, scope: :shipment_states) %></td>
+        <td><%= shipment.shipping_method.name %></td>
+        <td><%= pretty_time(shipment.updated_at) %></td>
+        <td><%= shipment.who %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
