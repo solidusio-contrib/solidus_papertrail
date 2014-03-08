@@ -13,7 +13,7 @@ class VersionsAdapter
           end
         end
         prototype = element
-        prototype.who = element.versions.last.terminator.to_i
+        prototype.who = element.versions.last.try(:terminator).try(:to_i)
         collection << prototype
       end
     end

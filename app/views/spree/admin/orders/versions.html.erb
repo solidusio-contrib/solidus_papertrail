@@ -1,0 +1,27 @@
+<% content_for :page_actions do %>  
+  <li><%= button_link_to Spree.t(:back), spree.edit_admin_order_path(@order), :icon => 'icon-arrow-left' %></li>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/order_tabs', locals: { current: 'Order History'} %>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Spree.t(:status) %></th>
+      <th><%= Spree.t(:process_status) %></th>
+      <th><%= Spree.t(:updated_at) %></th>
+      <th><%= Spree.t(:user) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @versions.each do |order| %>
+      <tr>
+        <td><%= Spree.t(order.state, :scope => :order_state) %></td>
+        <td><%= Spree.t(order.process_state, scope: :process_state) %></td>
+        <td><%= pretty_time(order.updated_at) %></td>
+        <td><%= order.who %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
