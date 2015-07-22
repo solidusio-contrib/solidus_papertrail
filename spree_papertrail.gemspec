@@ -19,8 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_core'
   s.add_dependency 'paper_trail', '~> 3.0.0'
 
-  s.add_runtime_dependency 'paper_trail', '~> 3.0.0'
-
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'database_cleaner'
