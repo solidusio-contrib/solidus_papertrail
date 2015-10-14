@@ -27,14 +27,14 @@ position: absolute;
     </tr>
   </thead>
   <tbody>
-    <% changes = JSON.parse(order.version_changes) %>
+    <% changes = YAML.load(order.version_changes) %>
     <% changes.keys.each do |key| %>
-    <% next if ['created_at', 'updated_at'].include?(key) %>
-    <tr>
-      <td><%= key %></td>
-      <td><%= changes[key][0] %></td>
-      <td><%= changes[key][1] %></td>
-    </tr>
+      <% next if ['created_at', 'updated_at'].include?(key) %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= changes[key][0] %></td>
+        <td><%= changes[key][1] %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

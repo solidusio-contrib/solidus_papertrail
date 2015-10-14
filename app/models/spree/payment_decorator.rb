@@ -1,6 +1,6 @@
 module Spree
   Payment.class_eval do
-    has_paper_trail
+    has_paper_trail class_name: 'Spree::PaymentVersion'
 
     attr_accessor :who, :version_changes, :version_id, :version_event, :version_date
 

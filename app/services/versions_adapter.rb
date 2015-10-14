@@ -10,7 +10,7 @@ class VersionsAdapter
           prototype.who = version.originator.to_i
           prototype.version_id = version.id
           prototype.version_event = version.event
-          prototype.version_changes = version.changeset
+          prototype.version_changes = version.object_changes
           prototype.version_date    = version.created_at
           collection << prototype
         end
