@@ -7,24 +7,30 @@
 <table>
   <thead>
     <tr>
-      <th><%= Spree.t(:identifier) %></th>
+      <th><%= Spree.t(:version_id) %></th>
+      <th><%= Spree.t(:id) %></th>
       <th><%= Spree.t(:tracking_number) %></th>
       <th><%= Spree.t(:shipment_state) %></th>
       <th><%= Spree.t(:shipping_method) %></th>
-      <th><%= Spree.t(:updated_at) %></th>
+      <th><%= Spree.t(:event) %></th>
+      <th><%= Spree.t(:changes) %></th>
       <th><%= Spree.t(:user) %></th>
+      <th><%= Spree.t(:created) %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @shipment_versions.each do |shipment| %>
       <tr>
+        <td><%= shipment.version_id %></td>
         <td><%= shipment.id %></td>
         <td><%= shipment.tracking %></td>
-        <td><%= Spree.t(shipment.state, scope: :shipment_states) %></td>
-        <td><%= shipment.shipping_method.name %></td>
-        <td><%= pretty_time(shipment.updated_at) %></td>
+        <td><%= shipment.state %></td>
+        <td><%= shipment.shipping_method.name if shipment.shipping_method %></td>
+        <td><%= shipment.version_event %></td>        
+        <td><%= render partial: 'object_changes', locals: { order: shipment } %></td>
         <td><%= shipment.who %></td>
+        <td><%= pretty_time(shipment.version_date) %></td>        
       </tr>
     <% end %>
   </tbody>

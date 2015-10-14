@@ -7,22 +7,30 @@
 <table>
   <thead>
     <tr>
-      <th><%= Spree.t(:identifier) %></th>
+      <th><%= Spree.t(:version_id) %></th>
+      <th><%= Spree.t(:id) %></th>
+      <th><%= Spree.t(:amount) %></th>
       <th><%= Spree.t(:payment_state) %></th>
       <th><%= Spree.t(:payment_method) %></th>
-      <th><%= Spree.t(:updated_at) %></th>
+      <th><%= Spree.t(:event) %></th>
+      <th><%= Spree.t(:changes) %></th>
       <th><%= Spree.t(:user) %></th>
+      <th><%= Spree.t(:created) %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @payment_versions.each do |payment| %>
       <tr>
+        <td><%= payment.version_id %></td>
         <td><%= payment.id %></td>
-        <td><%= Spree.t(payment.state, scope: :payment_states) %></td>
-        <td><%= payment_method_name(payment) %></td>
-        <td><%= pretty_time(payment.updated_at) %></td>
+        <td><%= number_to_currency payment.amount %></td>
+        <td><%= payment.state if payment.id %></td>
+        <td><%= payment_method_name(payment) if payment.id %></td>
+        <td><%= payment.version_event %></td>        
+        <td><%= render partial: 'object_changes', locals: { order: payment } %></td>
         <td><%= payment.who %></td>
+        <td><%= pretty_time(payment.version_date) %></td>
       </tr>
     <% end %>
   </tbody>
