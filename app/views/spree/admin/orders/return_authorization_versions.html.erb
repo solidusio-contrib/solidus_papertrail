@@ -1,0 +1,35 @@
+<% content_for :page_actions do %>  
+  <li><%= button_link_to Spree.t(:back), spree.edit_admin_order_path(@order), :icon => 'icon-arrow-left' %></li>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/order_tabs', locals: { current: 'Order History'} %>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Spree.t(:version_id) %></th>
+      <th><%= Spree.t(:number) %></th>
+      <th><%= Spree.t(:status) %></th>
+      <th><%= Spree.t(:pre_tax_total) %></th>
+      <th><%= Spree.t(:event) %></th>
+      <th><%= Spree.t(:changes) %></th>
+      <th><%= Spree.t(:user) %></th>
+      <th><%= Spree.t(:created) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @return_authorization_versions.each do |return_authorization| %>
+      <tr>
+        <td><%= return_authorization.version_id %></td>        
+        <td><%= return_authorization.number %></td>
+        <td><%= return_authorization.state %></td>
+        <td><%= return_authorization.display_pre_tax_total %></td>
+        <td><%= return_authorization.version_event %></td>        
+        <td class="align-center"><%= render partial: 'object_changes', locals: { object: return_authorization } %></td>
+        <td><%= return_authorization.who %></td>
+        <td><%= pretty_time(return_authorization.version_date) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

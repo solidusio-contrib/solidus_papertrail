@@ -28,7 +28,7 @@
         <td><%= shipment.state %></td>
         <td><%= shipment.shipping_method.name if shipment.shipping_method %></td>
         <td><%= shipment.version_event %></td>        
-        <td><%= render partial: 'object_changes', locals: { order: shipment } %></td>
+        <td class="align-center"><%= render partial: 'object_changes', locals: { object: shipment } %></td>
         <td><%= shipment.who %></td>
         <td><%= pretty_time(shipment.version_date) %></td>        
       </tr>

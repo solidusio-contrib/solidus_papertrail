@@ -1,5 +1,5 @@
 Spree::Admin::OrdersController.class_eval do
-  before_action :load_order, :only => [:edit, :update, :fire, :resend, :open_adjustments, :close_adjustments, :versions, :payment_versions, :shipment_versions]
+  before_action :load_order, :only => [:edit, :update, :fire, :resend, :open_adjustments, :close_adjustments, :versions, :payment_versions, :shipment_versions, :return_authorization_versions]
 
   def versions
     @versions = VersionsAdapter.create([@order])
@@ -13,5 +13,10 @@ Spree::Admin::OrdersController.class_eval do
   def shipment_versions
     shipments = @order.shipments.order(updated_at: :desc)
     @shipment_versions = VersionsAdapter.create(shipments)
+  end
+
+  def return_authorization_versions
+    return_authorizations = @order.return_authorizations.order(updated_at: :desc)
+    @return_authorization_versions = VersionsAdapter.create(return_authorizations)
   end
 end

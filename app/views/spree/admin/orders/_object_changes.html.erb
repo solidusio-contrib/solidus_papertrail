@@ -1,6 +1,5 @@
-
-<a href="javascript:$('#version-<%=order.version_id%>').toggle();" class="fa fa-search"></a>
-<div id="version-<%=order.version_id%>" style="display:none;
+<a href="javascript:$('#version-<%=object.version_id%>').toggle();" class="fa fa-search"></a>
+<div id="version-<%=object.version_id%>" style="display:none;
 position: absolute;
     width: 700px;
     left: 50%;
@@ -27,7 +26,7 @@ position: absolute;
     </tr>
   </thead>
   <tbody>
-    <% changes = YAML.load(order.version_changes) %>
+    <% changes = YAML.load(object.version_changes) %>
     <% changes.keys.each do |key| %>
       <% next if ['created_at', 'updated_at'].include?(key) %>
       <tr>

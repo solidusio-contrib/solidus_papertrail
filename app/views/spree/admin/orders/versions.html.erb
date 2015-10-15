@@ -24,7 +24,7 @@
         <td><%= order.state %></td>
         <td><%= order.payment_state %></td>
         <td><%= order.version_event %></td>        
-        <td><%= render partial: 'object_changes', locals: { order: order } %></td>
+        <td class="align-center"><%= render partial: 'object_changes', locals: { object: order } %></td>
         <td><%= order.who %></td>
         <td><%= pretty_time(order.version_date) %></td>
       </tr>
