@@ -4,9 +4,6 @@ Spree::Core::Engine.routes.draw do
     resources :orders do
       member do
         get :versions
-        get :payment_versions
-        get :shipment_versions
-        get :return_authorization_versions
       end
     end
   end

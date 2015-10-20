@@ -2,7 +2,13 @@
   <li><%= button_link_to Spree.t(:back), spree.edit_admin_order_path(@order), :icon => 'icon-arrow-left' %></li>
 <% end %>
 
-<%= render partial: 'spree/admin/shared/order_tabs', locals: { current: 'Order History'} %>
+<%= render partial: 'spree/admin/shared/order_tabs', locals: { current: 'Audit Trail'} %>
+
+<fieldset class="no-border-bottom">
+  <legend align="center" class="" data-hook="">
+    <%= Spree.t(:order_history) %>
+  </legend>
+</fieldset>
 
 <table>
   <thead>
@@ -31,3 +37,37 @@
     <% end %>
   </tbody>
 </table>
+
+<fieldset class="no-border-bottom">
+  <legend align="center" class="" data-hook="">
+    <%= Spree.t(:payment_history) %>
+  </legend>
+</fieldset>
+
+
+<%= render partial: 'payment_versions' %>
+
+<fieldset class="no-border-bottom">
+  <legend align="center" class="" data-hook="">
+    <%= Spree.t(:shipment_history) %>
+  </legend>
+</fieldset>
+
+<%= render partial: 'shipment_versions' %>
+
+<fieldset class="no-border-bottom">
+  <legend align="center" class="" data-hook="">
+    <%= Spree.t(:return_authorization_history) %>
+  </legend>
+</fieldset>
+
+
+<%= render partial: 'return_authorization_versions' %>
+
+<script>
+$(function(){
+  $(document).on('click', 'body', function(){
+    $('.object-changes').hide();
+  });
+});
+</script>

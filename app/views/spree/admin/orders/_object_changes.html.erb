@@ -1,6 +1,6 @@
-<a href="javascript:$('#version-<%=object.version_id%>').toggle();" class="fa fa-search"></a>
-<div id="version-<%=object.version_id%>" style="display:none;
-position: absolute;
+<a href="javascript:$('#<%=object.class.name.demodulize.underscore%>-<%=object.version_id%>').show();" class="fa fa-search"></a>
+<div id="<%=object.class.name.demodulize.underscore%>-<%=object.version_id%>" class="object-changes" style="display:none;
+    position: absolute;
     width: 700px;
     left: 50%;
     margin-left: -350px;
@@ -10,7 +10,6 @@ position: absolute;
     z-index: 1;
     padding: 10px;
     margin-top: 20px;
-
   ">
 <table>
   <colgroup>
