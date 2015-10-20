@@ -1,0 +1,37 @@
+<fieldset class="no-border-bottom">
+  <legend align="center" class="" data-hook="">
+    <%= Spree.t(:line_item_history) %>
+  </legend>
+</fieldset>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Spree.t(:version_id) %></th>
+      <th><%= Spree.t(:id) %></th>
+      <th><%= Spree.t(:product) %></th>
+      <th><%= Spree.t(:quantity) %></th>
+      <th><%= Spree.t(:price) %></th>
+      <th><%= Spree.t(:event) %></th>
+      <th><%= Spree.t(:changes) %></th>
+      <th><%= Spree.t(:user) %></th>
+      <th><%= Spree.t(:created) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @line_item_versions.each do |line_item| %>
+      <tr>
+        <td><%= line_item.version_id %></td>        
+        <td><%= line_item.id %></td>
+        <td><%= line_item.name if line_item.variant %></td>
+        <td><%= line_item.quantity %></td>
+        <td><%= line_item.price %></td>
+        <td><%= line_item.version_event %></td>        
+        <td class="align-center"><%= render partial: 'object_changes', locals: { object: line_item } %></td>
+        <td><%= line_item.who %></td>
+        <td><%= pretty_time(line_item.version_date) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,33 @@
+<fieldset class="no-border-bottom">
+  <legend align="center" class="" data-hook="">
+    <%= Spree.t(:adjustment_history) %>
+  </legend>
+</fieldset>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Spree.t(:version_id) %></th>
+      <th><%= Spree.t(:id) %></th>
+      <th><%= Spree.t(:label) %></th>
+      <th><%= Spree.t(:event) %></th>
+      <th><%= Spree.t(:changes) %></th>
+      <th><%= Spree.t(:user) %></th>
+      <th><%= Spree.t(:created) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @adjustment_versions.each do |adjustment| %>
+      <tr>
+        <td><%= adjustment.version_id %></td>        
+        <td><%= adjustment.id %></td>
+        <td><%= adjustment.label %></td>
+        <td><%= adjustment.version_event %></td>        
+        <td class="align-center"><%= render partial: 'object_changes', locals: { object: adjustment } %></td>
+        <td><%= adjustment.who %></td>
+        <td><%= pretty_time(adjustment.version_date) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

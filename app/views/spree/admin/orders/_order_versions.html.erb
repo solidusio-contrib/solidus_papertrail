@@ -1,0 +1,33 @@
+<fieldset class="no-border-bottom">
+  <legend align="center" class="" data-hook="">
+    <%= Spree.t(:order_history) %>
+  </legend>
+</fieldset>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Spree.t(:version_id) %></th>
+      <th><%= Spree.t(:status) %></th>
+      <th><%= Spree.t(:payment_state) %></th>
+      <th><%= Spree.t(:event) %></th>
+      <th><%= Spree.t(:changes) %></th>
+      <th><%= Spree.t(:user) %></th>
+      <th><%= Spree.t(:created) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @versions.each do |order| %>
+      <tr>
+        <td><%= order.version_id %></td>        
+        <td><%= order.state %></td>
+        <td><%= order.payment_state %></td>
+        <td><%= order.version_event %></td>        
+        <td class="align-center"><%= render partial: 'object_changes', locals: { object: order } %></td>
+        <td><%= order.who %></td>
+        <td><%= pretty_time(order.version_date) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

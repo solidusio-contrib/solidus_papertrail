@@ -4,63 +4,15 @@
 
 <%= render partial: 'spree/admin/shared/order_tabs', locals: { current: 'Audit Trail'} %>
 
-<fieldset class="no-border-bottom">
-  <legend align="center" class="" data-hook="">
-    <%= Spree.t(:order_history) %>
-  </legend>
-</fieldset>
+<%= render partial: 'order_versions' %>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= Spree.t(:version_id) %></th>
-      <th><%= Spree.t(:status) %></th>
-      <th><%= Spree.t(:payment_state) %></th>
-      <th><%= Spree.t(:event) %></th>
-      <th><%= Spree.t(:changes) %></th>
-      <th><%= Spree.t(:user) %></th>
-      <th><%= Spree.t(:created) %></th>
-    </tr>
-  </thead>
+<%= render partial: 'line_item_versions' %>
 
-  <tbody>
-    <% @versions.each do |order| %>
-      <tr>
-        <td><%= order.version_id %></td>        
-        <td><%= order.state %></td>
-        <td><%= order.payment_state %></td>
-        <td><%= order.version_event %></td>        
-        <td class="align-center"><%= render partial: 'object_changes', locals: { object: order } %></td>
-        <td><%= order.who %></td>
-        <td><%= pretty_time(order.version_date) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<fieldset class="no-border-bottom">
-  <legend align="center" class="" data-hook="">
-    <%= Spree.t(:payment_history) %>
-  </legend>
-</fieldset>
-
+<%= render partial: 'adjustment_versions' %>
 
 <%= render partial: 'payment_versions' %>
 
-<fieldset class="no-border-bottom">
-  <legend align="center" class="" data-hook="">
-    <%= Spree.t(:shipment_history) %>
-  </legend>
-</fieldset>
-
 <%= render partial: 'shipment_versions' %>
-
-<fieldset class="no-border-bottom">
-  <legend align="center" class="" data-hook="">
-    <%= Spree.t(:return_authorization_history) %>
-  </legend>
-</fieldset>
-
 
 <%= render partial: 'return_authorization_versions' %>
 
