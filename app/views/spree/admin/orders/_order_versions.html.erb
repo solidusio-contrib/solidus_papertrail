@@ -19,15 +19,27 @@
 
   <tbody>
     <% @versions.each do |order| %>
-      <tr>
-        <td><%= order.version_id %></td>        
-        <td><%= order.state %></td>
-        <td><%= order.payment_state %></td>
-        <td><%= order.version_event %></td>        
-        <td class="align-center"><%= render partial: 'object_changes', locals: { object: order } %></td>
-        <td><%= order.who %></td>
-        <td><%= pretty_time(order.version_date) %></td>
-      </tr>
+      <% if order.version_id %>
+        <tr>
+          <td><%= order.version_id %></td>        
+          <td><%= order.state %></td>
+          <td><%= order.payment_state %></td>
+          <td><%= order.version_event %></td>        
+          <td class="align-center"><%= render partial: 'object_changes', locals: { object: order } %></td>
+          <td><%= order.who %></td>
+          <td><%= pretty_time(order.version_date) %></td>
+        </tr>
+      <% else %>
+        <tr>
+          <td></td>
+          <td><%= order.state %></td>
+          <td><%= order.payment_state %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>      
+      <% end %>
     <% end %>
   </tbody>
 </table>

@@ -14,9 +14,7 @@ class VersionsAdapter
           prototype.version_date    = version.created_at
           collection << prototype
         end
-        # prototype = element
-        # prototype.who = element.versions.last.try(:terminator).try(:to_i)
-        # collection << prototype
+        collection << element
       end
     end
     collection

@@ -21,17 +21,31 @@
 
   <tbody>
     <% @payment_versions.each do |payment| %>
-      <tr>
-        <td><%= payment.version_id %></td>
-        <td><%= payment.id %></td>
-        <td><%= number_to_currency payment.amount %></td>
-        <td><%= payment.state if payment.id %></td>
-        <td><%= payment_method_name(payment) if payment.id %></td>
-        <td><%= payment.version_event %></td>        
-        <td class="align-center"><%= render partial: 'object_changes', locals: { object: payment } %></td>
-        <td><%= payment.who %></td>
-        <td><%= pretty_time(payment.version_date) %></td>
-      </tr>
+      <% if payment.version_id %>
+        <tr>
+          <td><%= payment.version_id %></td>
+          <td><%= payment.id %></td>
+          <td><%= number_to_currency payment.amount %></td>
+          <td><%= payment.state if payment.id %></td>
+          <td><%= payment_method_name(payment) if payment.id %></td>
+          <td><%= payment.version_event %></td>        
+          <td class="align-center"><%= render partial: 'object_changes', locals: { object: payment } %></td>
+          <td><%= payment.who %></td>
+          <td><%= pretty_time(payment.version_date) %></td>
+        </tr>
+      <% else %>
+          <td></td>
+          <td><%= payment.id %></td>
+          <td><%= number_to_currency payment.amount %></td>
+          <td><%= payment.state if payment.id %></td>
+          <td><%= payment_method_name(payment) if payment.id %></td>
+          <td></td>        
+          <td></td>
+          <td></td>
+          <td></td>        
+      <% end %>
     <% end %>
+    <tr>
+    </tr>
   </tbody>
 </table>

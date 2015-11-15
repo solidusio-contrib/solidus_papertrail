@@ -20,16 +20,28 @@
 
   <tbody>
     <% @return_authorization_versions.each do |return_authorization| %>
-      <tr>
-        <td><%= return_authorization.version_id %></td>        
-        <td><%= return_authorization.number %></td>
-        <td><%= return_authorization.state %></td>
-        <td><%= return_authorization.display_pre_tax_total %></td>
-        <td><%= return_authorization.version_event %></td>        
-        <td class="align-center"><%= render partial: 'object_changes', locals: { object: return_authorization } %></td>
-        <td><%= return_authorization.who %></td>
-        <td><%= pretty_time(return_authorization.version_date) %></td>
-      </tr>
+      <% if return_authorization.version_id %>
+        <tr>
+          <td><%= return_authorization.version_id %></td>        
+          <td><%= return_authorization.number %></td>
+          <td><%= return_authorization.state %></td>
+          <td><%= return_authorization.display_pre_tax_total %></td>
+          <td><%= return_authorization.version_event %></td>        
+          <td class="align-center"><%= render partial: 'object_changes', locals: { object: return_authorization } %></td>
+          <td><%= return_authorization.who %></td>
+          <td><%= pretty_time(return_authorization.version_date) %></td>
+        </tr>
+      <% else %>
+          <td></td>        
+          <td><%= return_authorization.number %></td>
+          <td><%= return_authorization.state %></td>
+          <td><%= return_authorization.display_pre_tax_total %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      <% end %>
+
     <% end %>
   </tbody>
 </table>

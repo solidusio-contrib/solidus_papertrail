@@ -21,17 +21,32 @@
 
   <tbody>
     <% @line_item_versions.each do |line_item| %>
-      <tr>
-        <td><%= line_item.version_id %></td>        
-        <td><%= line_item.id %></td>
-        <td><%= line_item.name if line_item.variant %></td>
-        <td><%= line_item.quantity %></td>
-        <td><%= line_item.price %></td>
-        <td><%= line_item.version_event %></td>        
-        <td class="align-center"><%= render partial: 'object_changes', locals: { object: line_item } %></td>
-        <td><%= line_item.who %></td>
-        <td><%= pretty_time(line_item.version_date) %></td>
-      </tr>
+      <% if line_item.version_id %>
+        <tr>
+          <td><%= line_item.version_id %></td>        
+          <td><%= line_item.id %></td>
+          <td><%= line_item.name if line_item.variant %></td>
+          <td><%= line_item.quantity %></td>
+          <td><%= number_to_currency line_item.price %></td>
+          <td><%= line_item.version_event %></td>        
+          <td class="align-center"><%= render partial: 'object_changes', locals: { object: line_item } %></td>
+          <td><%= line_item.who %></td>
+          <td><%= pretty_time(line_item.version_date) %></td>
+        </tr>
+      <% else %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><%= line_item.name if line_item.variant %></td>
+          <td><%= line_item.quantity %></td>
+          <td><%= line_item.price %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>      
+      <% end %>
+
     <% end %>
   </tbody>
 </table>
