@@ -4,7 +4,7 @@
   </legend>
 </fieldset>
 
-<table>
+<table id="adjustment-history">
   <thead>
     <tr>
       <th><%= Spree::AdjustmentVersion.human_attribute_name("version_id") %></th>
@@ -22,11 +22,11 @@
     <% @adjustment_versions.each do |adjustment| %>
       <% if adjustment.version_id %>
         <tr>
-          <td><%= adjustment.version_id %></td>        
+          <td><%= adjustment.version_id %></td>
           <td><%= adjustment.id %></td>
           <td><%= number_to_currency adjustment.amount %></td>
           <td><%= adjustment.label %></td>
-          <td><%= adjustment.version_event %></td>        
+          <td><%= adjustment.version_event %></td>
           <td class="align-center"><%= render partial: 'object_changes', locals: { object: adjustment } %></td>
           <td><%= adjustment.who %></td>
           <td><%= pretty_time(adjustment.version_date) %></td>
@@ -40,8 +40,8 @@
           <td></td>
           <td></td>
           <td></td>
-          <td><%= pretty_time(adjustment.updated_at) %></td>           
-        </tr>      
+          <td><%= pretty_time(adjustment.updated_at) %></td>
+        </tr>
       <% end %>
     <% end %>
   </tbody>
