@@ -55,7 +55,7 @@ class CreateVersions < ActiveRecord::Migration
         t.text     :object_changes,    :limit => TEXT_BYTES
         t.datetime :created_at
       end
-      # add_index :spree_return_authorization_versions, [:item_type, :item_id]
+      add_index :spree_return_authorization_versions, [:item_type, :item_id], name: 'spree_return_auth_versions'
     end
 
     if !table_exists?(:spree_line_item_versions)
