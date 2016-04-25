@@ -40,4 +40,16 @@ RSpec.feature 'Order History', :type => :feature, js: true do
     expect(page).to have_css("table#line-item-history>tbody tr", count: 2)
     expect_hidden_details('USD', table: '#line-item-history', row: 1, column: 7)
   end
+
+  it "tracks order adjustment history" do
+    visit spree.versions_admin_order_path(order)
+
+    expect(page).to have_css("table#adjustment-history>tbody tr", count: 0)
+
+    create(:tax_adjustment, adjustable: order, order: order)
+    visit(current_path)
+
+    expect(page).to have_css("table#adjustment-history>tbody tr", count: 2)
+    expect_hidden_details('Spree::TaxRate', table: '#adjustment-history', row: 1, column: 6)
+  end
 end
