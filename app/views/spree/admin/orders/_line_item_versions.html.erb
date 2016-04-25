@@ -1,21 +1,21 @@
 <fieldset class="no-border-bottom">
   <legend align="center" class="" data-hook="">
-    <%= Spree.t(:line_item_history) %>
+    <%= Spree::LineItemVersion.model_name.human %>
   </legend>
 </fieldset>
 
 <table>
   <thead>
     <tr>
-      <th><%= Spree.t(:version_id) %></th>
-      <th><%= Spree.t(:id) %></th>
-      <th><%= Spree.t(:product) %></th>
-      <th><%= Spree.t(:quantity) %></th>
-      <th><%= Spree.t(:price) %></th>
-      <th><%= Spree.t(:event) %></th>
-      <th><%= Spree.t(:changes) %></th>
-      <th><%= Spree.t(:user) %></th>
-      <th><%= Spree.t(:created) %></th>
+      <th><%= Spree::LineItemVersion.human_attribute_name("version_id") %></th>
+      <th><%= Spree::LineItemVersion.human_attribute_name("id") %></th>
+      <th><%= Spree::LineItemVersion.human_attribute_name("product") %></th>
+      <th><%= Spree::LineItemVersion.human_attribute_name("quantity") %></th>
+      <th><%= Spree::LineItemVersion.human_attribute_name("price") %></th>
+      <th><%= Spree::LineItemVersion.human_attribute_name("event") %></th>
+      <th><%= Spree::LineItemVersion.human_attribute_name("changes") %></th>
+      <th><%= Spree::LineItemVersion.human_attribute_name("user") %></th>
+      <th><%= Spree::LineItemVersion.human_attribute_name("created") %></th>
     </tr>
   </thead>
 

@@ -1,5 +1,21 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      spree/adjustmentversion::
+        one: Adjustment Version
+        other: Adjustment History
+      spree/line_item_version::
+        one: Line Item Version
+        other: Line Item History
+      spree/orderversion::
+        one: Order Version
+        other: Order History
+      spree/paymentversion::
+        one: Payment Version
+        other: Payment History
+      spree/return_authorization_version:
+        one: Return Authorization Version
+        other: Return Authorization History
+      spree/shipmentversion::
+        one: Shipment Version
+        other: Shipment History
