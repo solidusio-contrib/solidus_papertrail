@@ -4,7 +4,7 @@
   </legend>
 </fieldset>
 
-<table>
+<table id="order-history">
   <thead>
     <tr>
       <th><%= Spree::OrderVersion.human_attribute_name("version_id") %></th>
@@ -21,10 +21,10 @@
     <% @versions.each do |order| %>
       <% if order.version_id %>
         <tr>
-          <td><%= order.version_id %></td>        
+          <td><%= order.version_id %></td>
           <td><%= order.state %></td>
           <td><%= order.payment_state %></td>
-          <td><%= order.version_event %></td>        
+          <td><%= order.version_event %></td>
           <td class="align-center"><%= render partial: 'object_changes', locals: { object: order } %></td>
           <td><%= order.who %></td>
           <td><%= pretty_time(order.version_date) %></td>
@@ -37,8 +37,8 @@
           <td></td>
           <td></td>
           <td></td>
-          <td><%= pretty_time(order.updated_at) %></td>           
-        </tr>      
+          <td><%= pretty_time(order.updated_at) %></td>
+        </tr>
       <% end %>
     <% end %>
   </tbody>
