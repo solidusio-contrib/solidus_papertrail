@@ -4,6 +4,8 @@ branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
 gem 'solidus', github: 'solidusio/solidus', branch: branch
 
 # Provides basic authentication functionality for testing parts of your engine
-gem 'spree_auth_devise', github: 'spree/spree_auth_devise'
+group :development, :test do
+  gem 'solidus_auth_devise'
+end
 
 gemspec
