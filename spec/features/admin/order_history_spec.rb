@@ -28,4 +28,16 @@ RSpec.feature 'Order History', :type => :feature, js: true do
     expect(page).to have_css("table#order-history>tbody tr", count: 3)
     expect_hidden_details('R212345678', table: '#order-history', row: 1, column: 5)
   end
+
+  it "tracks order line item history" do
+    visit spree.versions_admin_order_path(order)
+
+    expect(page).to have_css("table#line-item-history>tbody tr", count: 0)
+
+    order.contents.add(create(:variant, currency: 'USD'))
+    visit(current_path)
+
+    expect(page).to have_css("table#line-item-history>tbody tr", count: 2)
+    expect_hidden_details('USD', table: '#line-item-history', row: 1, column: 7)
+  end
 end
