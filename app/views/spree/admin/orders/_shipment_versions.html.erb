@@ -4,7 +4,7 @@
   </legend>
 </fieldset>
 
-<table>
+<table id="shipment-history">
   <thead>
     <tr>
       <th><%= Spree::ShipmentVersion.human_attribute_name("version_id") %></th>
@@ -28,10 +28,10 @@
           <td><%= shipment.tracking %></td>
           <td><%= shipment.state %></td>
           <td><%= shipment.shipping_method.name if shipment.shipping_method %></td>
-          <td><%= shipment.version_event %></td>        
+          <td><%= shipment.version_event %></td>
           <td class="align-center"><%= render partial: 'object_changes', locals: { object: shipment } %></td>
           <td><%= shipment.who %></td>
-          <td><%= pretty_time(shipment.version_date) %></td>        
+          <td><%= pretty_time(shipment.version_date) %></td>
         </tr>
       <% else %>
         <tr>
@@ -43,8 +43,8 @@
           <td></td>
           <td></td>
           <td></td>
-          <td><%= pretty_time(shipment.updated_at) %></td>        
-        </tr>      
+          <td><%= pretty_time(shipment.updated_at) %></td>
+        </tr>
       <% end %>
 
     <% end %>
