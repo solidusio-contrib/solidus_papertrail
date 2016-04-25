@@ -1,19 +1,19 @@
 <fieldset class="no-border-bottom">
   <legend align="center" class="" data-hook="">
-    <%= Spree.t(:order_history) %>
+    <%= Spree::OrderVersion.model_name.human %>
   </legend>
 </fieldset>
 
 <table>
   <thead>
     <tr>
-      <th><%= Spree.t(:version_id) %></th>
-      <th><%= Spree.t(:status) %></th>
-      <th><%= Spree.t(:payment_state) %></th>
-      <th><%= Spree.t(:event) %></th>
-      <th><%= Spree.t(:changes) %></th>
-      <th><%= Spree.t(:user) %></th>
-      <th><%= Spree.t(:created) %></th>
+      <th><%= Spree::OrderVersion.human_attribute_name("version_id") %></th>
+      <th><%= Spree::OrderVersion.human_attribute_name("status") %></th>
+      <th><%= Spree::OrderVersion.human_attribute_name("payment_state") %></th>
+      <th><%= Spree::OrderVersion.human_attribute_name("event") %></th>
+      <th><%= Spree::OrderVersion.human_attribute_name("changes") %></th>
+      <th><%= Spree::OrderVersion.human_attribute_name("user") %></th>
+      <th><%= Spree::OrderVersion.human_attribute_name("created") %></th>
     </tr>
   </thead>
 
