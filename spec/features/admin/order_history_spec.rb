@@ -76,4 +76,19 @@ RSpec.feature 'Order History', :type => :feature, js: true do
     expect(page).to have_css("table#shipment-history>tbody tr", count: 2)
     expect_hidden_details('9182736', table: '#shipment-history', row: 1, column: 7)
   end
+
+  context 'with shipped order' do
+    let!(:order) { create(:shipped_order) }
+
+    it "tracks order return authorizations history" do
+      visit spree.versions_admin_order_path(order)
+
+      expect(page).to have_css("table#returns-history>tbody tr", count: 0)
+      create(:return_authorization, order: order, memo: 'All wrong.')
+      visit(current_path)
+
+      expect(page).to have_css("table#returns-history>tbody tr", count: 2)
+      expect_hidden_details('All wrong.', table: '#returns-history', row: 1, column: 6)
+    end
+  end
 end
