@@ -25,14 +25,16 @@
     </tr>
   </thead>
   <tbody>
-    <% changes = YAML.load(object.version_changes) %>
-    <% changes.keys.each do |key| %>
-      <% next if ['created_at', 'updated_at'].include?(key) %>
-      <tr>
-        <td><%= key %></td>
-        <td><%= changes[key][0] %></td>
-        <td><%= changes[key][1] %></td>
-      </tr>
+    <% if object.version_changes %>
+      <% changes = YAML.load(object.version_changes) %>
+      <% changes.keys.each do |key| %>
+        <% next if ['created_at', 'updated_at'].include?(key) %>
+        <tr>
+          <td><%= key %></td>
+          <td><%= changes[key][0] %></td>
+          <td><%= changes[key][1] %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
