@@ -1,20 +1,20 @@
 <fieldset class="no-border-bottom">
   <legend align="center" class="" data-hook="">
-    <%= Spree.t(:return_authorization_history) %>
+    <%= Spree::ReturnAuthorizationVersion.model_name.human %>
   </legend>
 </fieldset>
 
-<table>
+<table id="returns-history">
   <thead>
     <tr>
-      <th><%= Spree.t(:version_id) %></th>
-      <th><%= Spree.t(:number) %></th>
-      <th><%= Spree.t(:status) %></th>
-      <th><%= Spree.t(:pre_tax_total) %></th>
-      <th><%= Spree.t(:event) %></th>
-      <th><%= Spree.t(:changes) %></th>
-      <th><%= Spree.t(:user) %></th>
-      <th><%= Spree.t(:created) %></th>
+      <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("version_id") %></th>
+      <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("number") %></th>
+      <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("status") %></th>
+      <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("pre_tax_total") %></th>
+      <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("event") %></th>
+      <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("changes") %></th>
+      <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("user") %></th>
+      <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("created") %></th>
     </tr>
   </thead>
 
@@ -22,26 +22,27 @@
     <% @return_authorization_versions.each do |return_authorization| %>
       <% if return_authorization.version_id %>
         <tr>
-          <td><%= return_authorization.version_id %></td>        
+          <td><%= return_authorization.version_id %></td>
           <td><%= return_authorization.number %></td>
           <td><%= return_authorization.state %></td>
-          <td><%= return_authorization.display_pre_tax_total %></td>
-          <td><%= return_authorization.version_event %></td>        
+          <td><%= return_authorization.order && return_authorization.display_pre_tax_total %></td>
+          <td><%= return_authorization.version_event %></td>
           <td class="align-center"><%= render partial: 'object_changes', locals: { object: return_authorization } %></td>
           <td><%= return_authorization.who %></td>
           <td><%= pretty_time(return_authorization.version_date) %></td>
         </tr>
       <% else %>
-          <td></td>        
+        <tr>
+          <td></td>
           <td><%= return_authorization.number %></td>
           <td><%= return_authorization.state %></td>
-          <td><%= return_authorization.display_pre_tax_total %></td>
           <td></td>
           <td></td>
           <td></td>
-          <td><%= pretty_time(return_authorization.updated_at) %></td>        
+          <td></td>
+          <td><%= pretty_time(return_authorization.updated_at) %></td>
+        </tr>
       <% end %>
-
     <% end %>
   </tbody>
 </table>

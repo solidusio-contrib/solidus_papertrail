@@ -1,21 +1,21 @@
 <fieldset class="no-border-bottom">
   <legend align="center" class="" data-hook="">
-    <%= Spree.t(:payment_history) %>
+    <%= Spree::PaymentVersion.model_name.human %>
   </legend>
 </fieldset>
 
-<table>
+<table id="payment-history">
   <thead>
     <tr>
-      <th><%= Spree.t(:version_id) %></th>
-      <th><%= Spree.t(:id) %></th>
-      <th><%= Spree.t(:amount) %></th>
-      <th><%= Spree.t(:payment_state) %></th>
-      <th><%= Spree.t(:payment_method) %></th>
-      <th><%= Spree.t(:event) %></th>
-      <th><%= Spree.t(:changes) %></th>
-      <th><%= Spree.t(:user) %></th>
-      <th><%= Spree.t(:created) %></th>
+      <th><%= Spree::PaymentVersion.human_attribute_name("version_id") %></th>
+      <th><%= Spree::PaymentVersion.human_attribute_name("id") %></th>
+      <th><%= Spree::PaymentVersion.human_attribute_name("amount") %></th>
+      <th><%= Spree::PaymentVersion.human_attribute_name("payment_state") %></th>
+      <th><%= Spree::PaymentVersion.human_attribute_name("payment_method") %></th>
+      <th><%= Spree::PaymentVersion.human_attribute_name("event") %></th>
+      <th><%= Spree::PaymentVersion.human_attribute_name("changes") %></th>
+      <th><%= Spree::PaymentVersion.human_attribute_name("user") %></th>
+      <th><%= Spree::PaymentVersion.human_attribute_name("created") %></th>
     </tr>
   </thead>
 
@@ -28,7 +28,7 @@
           <td><%= number_to_currency payment.amount %></td>
           <td><%= payment.state if payment.id %></td>
           <td><%= payment_method_name(payment) if payment.id %></td>
-          <td><%= payment.version_event %></td>        
+          <td><%= payment.version_event %></td>
           <td class="align-center"><%= render partial: 'object_changes', locals: { object: payment } %></td>
           <td><%= payment.who %></td>
           <td><%= pretty_time(payment.version_date) %></td>
@@ -39,10 +39,10 @@
           <td><%= number_to_currency payment.amount %></td>
           <td><%= payment.state if payment.id %></td>
           <td><%= payment_method_name(payment) if payment.id %></td>
-          <td></td>        
           <td></td>
           <td></td>
-          <td><%= pretty_time(payment.updated_at) %></td>           
+          <td></td>
+          <td><%= pretty_time(payment.updated_at) %></td>
       <% end %>
     <% end %>
     <tr>
