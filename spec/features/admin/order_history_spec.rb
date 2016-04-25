@@ -50,4 +50,16 @@ RSpec.feature 'Order History', :type => :feature, js: true do
     expect(page).to have_css("table#adjustment-history>tbody tr", count: 2)
     expect_hidden_details('Spree::TaxRate', table: '#adjustment-history', row: 1, column: 6)
   end
+
+  it "tracks order payment history" do
+    visit spree.versions_admin_order_path(order)
+
+    expect(page).to have_css("table#payment-history>tbody tr", count: 1)
+
+    create(:payment, order: order, response_code: '54321')
+    visit(current_path)
+
+    expect(page).to have_css("table#payment-history>tbody tr", count: 3)
+    expect_hidden_details('54321', table: '#payment-history', row: 1, column: 7)
+  end
 end

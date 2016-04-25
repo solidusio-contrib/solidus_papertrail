@@ -4,7 +4,7 @@
   </legend>
 </fieldset>
 
-<table>
+<table id="payment-history">
   <thead>
     <tr>
       <th><%= Spree::PaymentVersion.human_attribute_name("version_id") %></th>
@@ -28,7 +28,7 @@
           <td><%= number_to_currency payment.amount %></td>
           <td><%= payment.state if payment.id %></td>
           <td><%= payment_method_name(payment) if payment.id %></td>
-          <td><%= payment.version_event %></td>        
+          <td><%= payment.version_event %></td>
           <td class="align-center"><%= render partial: 'object_changes', locals: { object: payment } %></td>
           <td><%= payment.who %></td>
           <td><%= pretty_time(payment.version_date) %></td>
@@ -39,10 +39,10 @@
           <td><%= number_to_currency payment.amount %></td>
           <td><%= payment.state if payment.id %></td>
           <td><%= payment_method_name(payment) if payment.id %></td>
-          <td></td>        
           <td></td>
           <td></td>
-          <td><%= pretty_time(payment.updated_at) %></td>           
+          <td></td>
+          <td><%= pretty_time(payment.updated_at) %></td>
       <% end %>
     <% end %>
     <tr>
