@@ -1,3 +1,3 @@
 require 'spree_core'
-require 'spree_papertrail/engine'
+require 'solidus_papertrail/engine'
 require 'paper_trail'

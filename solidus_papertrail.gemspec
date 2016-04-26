@@ -1,9 +1,9 @@
 # encoding: UTF-8
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_papertrail'
+  s.name        = 'solidus_papertrail'
   s.version     = '2.1.4'
-  s.summary     = 'Spree Papertrail integration'
+  s.summary     = 'Solidus Papertrail integration'
   s.description = 'Views to see Order, Payment and Shipment Papertrail versions'
   s.required_ruby_version = '>= 1.9.3'
 
