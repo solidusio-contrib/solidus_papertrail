@@ -1,21 +1,21 @@
 <fieldset class="no-border-bottom">
   <legend align="center" class="" data-hook="">
-    <%= Spree.t(:shipment_history) %>
+    <%= Spree::ShipmentVersion.model_name.human %>
   </legend>
 </fieldset>
 
-<table>
+<table id="shipment-history">
   <thead>
     <tr>
-      <th><%= Spree.t(:version_id) %></th>
-      <th><%= Spree.t(:id) %></th>
-      <th><%= Spree.t(:tracking_number) %></th>
-      <th><%= Spree.t(:shipment_state) %></th>
-      <th><%= Spree.t(:shipping_method) %></th>
-      <th><%= Spree.t(:event) %></th>
-      <th><%= Spree.t(:changes) %></th>
-      <th><%= Spree.t(:user) %></th>
-      <th><%= Spree.t(:created) %></th>
+      <th><%= Spree::ShipmentVersion.human_attribute_name("version_id") %></th>
+      <th><%= Spree::ShipmentVersion.human_attribute_name("id") %></th>
+      <th><%= Spree::ShipmentVersion.human_attribute_name("tracking_number") %></th>
+      <th><%= Spree::ShipmentVersion.human_attribute_name("shipment_state") %></th>
+      <th><%= Spree::ShipmentVersion.human_attribute_name("shipping_method") %></th>
+      <th><%= Spree::ShipmentVersion.human_attribute_name("event") %></th>
+      <th><%= Spree::ShipmentVersion.human_attribute_name("changes") %></th>
+      <th><%= Spree::ShipmentVersion.human_attribute_name("user") %></th>
+      <th><%= Spree::ShipmentVersion.human_attribute_name("created") %></th>
     </tr>
   </thead>
 
@@ -28,10 +28,10 @@
           <td><%= shipment.tracking %></td>
           <td><%= shipment.state %></td>
           <td><%= shipment.shipping_method.name if shipment.shipping_method %></td>
-          <td><%= shipment.version_event %></td>        
+          <td><%= shipment.version_event %></td>
           <td class="align-center"><%= render partial: 'object_changes', locals: { object: shipment } %></td>
           <td><%= shipment.who %></td>
-          <td><%= pretty_time(shipment.version_date) %></td>        
+          <td><%= pretty_time(shipment.version_date) %></td>
         </tr>
       <% else %>
         <tr>
@@ -43,8 +43,8 @@
           <td></td>
           <td></td>
           <td></td>
-          <td><%= pretty_time(shipment.updated_at) %></td>        
-        </tr>      
+          <td><%= pretty_time(shipment.updated_at) %></td>
+        </tr>
       <% end %>
 
     <% end %>
