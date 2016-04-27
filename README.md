@@ -1,4 +1,4 @@
-SpreePapertrail
+SolidusPapertrail
 ===============
 
 Introduction goes here.
@@ -6,17 +6,17 @@ Introduction goes here.
 Installation
 ------------
 
-Add spree_papertrail to your Gemfile:
+Add solidus_papertrail to your Gemfile:
 
 ```ruby
-gem 'spree_papertrail'
+gem 'solidus_papertrail'
 ```
 
 Bundle your dependencies and run the installation generator:
 
 ```shell
 bundle
-bundle exec rails g spree_papertrail:install
+bundle exec rails g solidus_papertrail:install
 ```
 
 Testing
@@ -34,7 +34,7 @@ When testing your applications integration with this extension you may use it's 
 Simply add this require statement to your spec_helper:
 
 ```ruby
-require 'spree_papertrail/factories'
+require 'solidus_papertrail/factories'
 ```
 
 
