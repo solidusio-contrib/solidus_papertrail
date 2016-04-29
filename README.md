@@ -1,6 +1,8 @@
 SolidusPapertrail
 ===============
 
+[![Build Status](https://travis-ci.org/solidusio-contrib/solidus_papertrail.svg?branch=master)](https://travis-ci.org/solidusio-contrib/solidus_papertrail)
+
 Introduction goes here.
 
 Installation
