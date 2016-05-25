@@ -6,7 +6,9 @@ class VersionsAdapter
       if element.respond_to?(:versions)
         versions = element.versions.order(:object, created_at: :asc)
         versions.each do |version|
-          prototype = version.object.nil? ? element.class.new : YamlAdapter.create(version.object, element.class)
+          prototype = version.object.nil? ?
+            element.class.new :
+            YamlAdapter.new(version.object, element.class).deserialize
           prototype.who = version.whodunnit
           prototype.version_id = version.id
           prototype.version_event = version.event
