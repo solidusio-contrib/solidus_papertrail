@@ -5,9 +5,10 @@ require 'spec_helper'
 # to target cells using anything but row and column numbers
 def expect_hidden_details(details, table: nil, row: 0, column: 0)
   within(:css, "table#{table}>tbody") do
-    expect(page).to_not have_content(details)
     find(:css, "tr:nth-child(#{row}) td:nth-child(#{column}) a").click
-    expect(page).to have_content(details)
+    within '.object-changes' do
+      expect(page).to have_content(details)
+    end
   end
 end
 
@@ -34,11 +35,12 @@ RSpec.feature 'Order History', :type => :feature, js: true do
 
     expect(page).to have_css("table#line-item-history>tbody tr", count: 0)
 
-    order.contents.add(create(:variant, currency: 'USD'))
+    variant = create(:variant)
+    order.contents.add(variant)
     visit(current_path)
 
     expect(page).to have_css("table#line-item-history>tbody tr", count: 2)
-    expect_hidden_details('USD', table: '#line-item-history', row: 1, column: 7)
+    expect_hidden_details(variant.price, table: '#line-item-history', row: 1, column: 7)
   end
 
   it "tracks order adjustment history" do
