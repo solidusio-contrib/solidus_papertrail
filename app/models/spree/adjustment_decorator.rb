@@ -1,15 +1,6 @@
 module Spree
   Adjustment.class_eval do
+    include Spree::Versionable
     has_paper_trail class_name: 'Spree::AdjustmentVersion'
-
-    attr_accessor :who, :version_changes, :version_id, :version_event, :version_date
-
-    def who=(user_id)
-      begin
-        @who = Spree::User.find(user_id).full_name
-      rescue
-        @who = 'Unknown'
-      end
-    end
   end
 end
