@@ -21,7 +21,8 @@ require 'solidus_papertrail/version'
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_runtime_dependency 'solidus_backend', [">= 1.0", "< 3"]
+  s.add_dependency 'solidus_backend', [">= 1.0", "< 3"]
+  s.add_dependency 'solidus_support'
   s.add_dependency 'paper_trail', '~> 7.0'
 
   s.add_development_dependency 'capybara', '~> 2.1'
