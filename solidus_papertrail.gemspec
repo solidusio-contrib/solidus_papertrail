@@ -22,7 +22,7 @@ require 'solidus_papertrail/version'
   s.requirements << 'none'
 
   s.add_runtime_dependency 'solidus_backend', [">= 1.0", "< 3"]
-  s.add_dependency 'paper_trail', '~> 4.0.0'
+  s.add_dependency 'paper_trail', '~> 7.0'
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'poltergeist'
