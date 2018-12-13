@@ -15,6 +15,12 @@ else
   gem "rails", "~> 4.2.7"
 end
 
+if branch < "v2.5"
+  gem 'factory_bot', '4.10.0', group: :test
+else
+  gem 'factory_bot', '> 4.10.0', group: :test
+end
+
 gem 'pg', '~> 0.21'
 gem 'mysql2', '~> 0.4.10'
 
