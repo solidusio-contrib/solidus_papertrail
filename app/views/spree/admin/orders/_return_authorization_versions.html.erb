@@ -25,7 +25,7 @@
           <td><%= return_authorization.version_id %></td>
           <td><%= return_authorization.number %></td>
           <td><%= return_authorization.state %></td>
-          <td><%= return_authorization.order && return_authorization.display_pre_tax_total %></td>
+          <td><%= return_authorization.order && return_authorization.display_total_excluding_vat %></td>
           <td><%= return_authorization.version_event %></td>
           <td class="align-center"><%= render partial: 'object_changes', locals: { object: return_authorization } %></td>
           <td><%= return_authorization.who %></td>
@@ -36,7 +36,7 @@
           <td></td>
           <td><%= return_authorization.number %></td>
           <td><%= return_authorization.state %></td>
-          <td><%= return_authorization.order && return_authorization.display_pre_tax_total %></td>
+          <td><%= return_authorization.order && return_authorization.display_total_excluding_vat %></td>
           <td></td>
           <td></td>
           <td></td>

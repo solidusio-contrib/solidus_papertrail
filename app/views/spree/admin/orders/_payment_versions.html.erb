@@ -38,7 +38,7 @@
           <td><%= payment.id %></td>
           <td><%= number_to_currency payment.amount %></td>
           <td><%= payment.state if payment.id %></td>
-          <td><%= payment_method_name(payment) if payment.id %></td>
+          <td><%= payment.payment_method.name if payment.id %></td>
           <td></td>
           <td></td>
           <td></td>
