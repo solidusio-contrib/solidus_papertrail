@@ -10,7 +10,13 @@
       <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("version_id") %></th>
       <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("number") %></th>
       <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("status") %></th>
-      <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("pre_tax_total") %></th>
+
+      <% if Spree.solidus_gem_version >= Gem::Version.new('2.4.0') %>
+        <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("total_excluding_vat") %></th>
+      <% else %>
+        <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("pre_tax_total") %></th>
+      <% end %>
+
       <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("event") %></th>
       <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("changes") %></th>
       <th><%= Spree::ReturnAuthorizationVersion.human_attribute_name("user") %></th>
@@ -25,7 +31,13 @@
           <td><%= return_authorization.version_id %></td>
           <td><%= return_authorization.number %></td>
           <td><%= return_authorization.state %></td>
-          <td><%= return_authorization.order && return_authorization.display_total_excluding_vat %></td>
+
+          <% if Spree.solidus_gem_version >= Gem::Version.new('2.4.0') %>
+            <td><%= return_authorization.order && return_authorization.display_total_excluding_vat %></td>
+          <% else %>
+            <td><%= return_authorization.order && return_authorization.display_pre_tax_total %></td>
+          <% end %>
+
           <td><%= return_authorization.version_event %></td>
           <td class="align-center"><%= render partial: 'object_changes', locals: { object: return_authorization } %></td>
           <td><%= return_authorization.who %></td>
@@ -36,7 +48,13 @@
           <td></td>
           <td><%= return_authorization.number %></td>
           <td><%= return_authorization.state %></td>
-          <td><%= return_authorization.order && return_authorization.display_total_excluding_vat %></td>
+
+          <% if Spree.solidus_gem_version >= Gem::Version.new('2.4.0') %>
+            <td><%= return_authorization.order && return_authorization.display_total_excluding_vat %></td>
+          <% else %>
+            <td><%= return_authorization.order && return_authorization.display_pre_tax_total %></td>
+          <% end %>
+
           <td></td>
           <td></td>
           <td></td>
