@@ -18,7 +18,7 @@ require 'solidus_papertrail/version'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.require_path = 'lib'
+  s.require_path  = 'lib'
   s.requirements << 'none'
 
   s.add_dependency 'solidus_backend', [">= 1.0", "< 3"]
@@ -29,7 +29,6 @@ require 'solidus_papertrail/version'
   s.add_development_dependency 'poltergeist'
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'factory_bot', '~> 4.2'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'rspec-rails',  '~> 3'

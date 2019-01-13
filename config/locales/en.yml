@@ -1,21 +1,21 @@
 en:
   activerecord:
     models:
-      spree/adjustmentversion::
+      spree/adjustmentversion:
         one: Adjustment Version
         other: Adjustment History
-      spree/line_item_version::
+      spree/line_item_version:
         one: Line Item Version
         other: Line Item History
-      spree/orderversion::
+      spree/orderversion:
         one: Order Version
         other: Order History
-      spree/paymentversion::
+      spree/paymentversion:
         one: Payment Version
         other: Payment History
       spree/return_authorization_version:
         one: Return Authorization Version
         other: Return Authorization History
-      spree/shipmentversion::
+      spree/shipmentversion:
         one: Shipment Version
         other: Shipment History
