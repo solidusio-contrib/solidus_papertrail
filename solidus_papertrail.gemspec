@@ -32,5 +32,5 @@ require 'solidus_papertrail/version'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'rspec-rails',  '~> 3'
-  s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'sqlite3', '~> 1.3.6'
 end
