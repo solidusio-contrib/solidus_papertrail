@@ -2,8 +2,8 @@ source "https://rubygems.org"
 
 branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
 gem "solidus", git: 'https://github.com/solidusio/solidus.git', branch: branch
-gem "solidus_auth_devise"
-gem 'deface'
+gem 'solidus_auth_devise', '~> 2.1'
+gem 'deface', '~> 1.3'
 
 if branch < "v2.5"
   gem 'factory_bot', '4.10.0', group: :test
@@ -18,7 +18,7 @@ else
 end
 
 group :development, :test do
-  gem "pry-rails"
+  gem 'pry-rails', '~> 0.3.9'
 end
 
 gemspec
