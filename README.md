@@ -1,7 +1,7 @@
 SolidusPapertrail
 ===============
 
-[![Build Status](https://travis-ci.org/solidusio-contrib/solidus_papertrail.svg?branch=master)](https://travis-ci.org/solidusio-contrib/solidus_papertrail)
+[![CircleCI](https://circleci.com/gh/solidusio-contrib/solidus_papertrail.svg?style=svg)](https://circleci.com/gh/solidusio-contrib/solidus_papertrail)
 
 Introduction goes here.
 
