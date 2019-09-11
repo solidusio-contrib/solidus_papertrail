@@ -1,32 +1,26 @@
-ENV["RAILS_ENV"] = "test"
+# frozen_string_literal: true
 
-begin
-  require File.expand_path('../dummy/config/environment', __FILE__)
-rescue LoadError
-  fail 'Could not load dummy application. Please ensure you have run `bundle exec rake test_app`'
-end
+require "simplecov"
+SimpleCov.start "rails"
 
-require 'rspec/rails'
+ENV["RAILS_ENV"] ||= "test"
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |file| require file }
+require File.expand_path('dummy/config/environment.rb', __dir__)
+
+require "solidus_support/extension/feature_helper"
+require 'spree/testing_support/controller_requests'
+require 'spree/testing_support/capybara_ext'
+
+Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each { |f| require f }
+
+FactoryBot.find_definitions
 
 RSpec.configure do |config|
-  # == Mock Framework
-  #
-  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-  #
-  # config.mock_with :mocha
-  # config.mock_with :flexmock
-  # config.mock_with :rr
-  config.mock_with :rspec
+  config.infer_spec_type_from_file_location!
+  config.raise_errors_for_deprecations!
 
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.example_status_persistence_file_path = "./spec/examples.txt"
 
-  # because database cleaner
-  config.use_transactional_fixtures = false
-
-  config.include FeatureHelper, type: :feature
+  config.include Spree::TestingSupport::UrlHelpers
+  config.include Spree::TestingSupport::ControllerRequests, type: :controller
 end
