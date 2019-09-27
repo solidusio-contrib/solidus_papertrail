@@ -6,9 +6,9 @@ gem 'solidus_auth_devise', '~> 2.1'
 gem 'deface', '~> 1.3'
 
 if branch < "v2.5"
-  gem 'factory_bot', '4.10.0', group: :test
+  gem 'factory_bot', '5.1.0', group: :test
 else
-  gem 'factory_bot', '> 4.10.0', group: :test
+  gem 'factory_bot', '5.1.0', group: :test
 end
 
 if ENV['DB'] == 'mysql'
