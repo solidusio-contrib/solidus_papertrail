@@ -23,12 +23,14 @@ require 'solidus_papertrail/version'
 
   s.add_dependency 'solidus_backend', [">= 1.0", "< 3"]
   s.add_dependency 'solidus_support'
+  s.add_dependency 'deface', '~> 1.3'
   s.add_dependency 'paper_trail', '~> 7.0'
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'poltergeist'
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'factory_bot'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'rspec-rails',  '~> 3'
