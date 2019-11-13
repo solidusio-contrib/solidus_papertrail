@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   Payment.class_eval do
     include Spree::Versionable

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Spree::Admin::OrdersController.class_eval do
   def versions
-    @order = Spree::Order.find_by_number params[:id]
+    @order = Spree::Order.find_by number: params[:id]
 
     @versions = VersionsAdapter.create([@order])
 
@@ -14,7 +16,7 @@ Spree::Admin::OrdersController.class_eval do
     @line_item_versions = VersionsAdapter.create(line_items)
 
     adjustments = @order.all_adjustments.order(updated_at: :desc)
-    @adjustment_versions = VersionsAdapter.create(adjustments)    
+    @adjustment_versions = VersionsAdapter.create(adjustments)
 
     return_authorizations = @order.return_authorizations.order(updated_at: :desc)
     @return_authorization_versions = VersionsAdapter.create(return_authorizations)

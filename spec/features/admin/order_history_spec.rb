@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 # Each entry has a "click to reveal changes" link to display details in a popup
@@ -12,10 +14,10 @@ def expect_hidden_details(details, table: nil, row: 0, column: 0)
   end
 end
 
-RSpec.feature 'Order History', :type => :feature, js: true do
+RSpec.describe 'Order History', type: :feature, js: true do
   let!(:order) { create(:order, number: 'R212345678') }
 
-  before :each do
+  before do
     login_as_admin
   end
 
@@ -72,7 +74,7 @@ RSpec.feature 'Order History', :type => :feature, js: true do
 
     expect(page).to have_css("table#shipment-history>tbody tr", count: 0)
 
-    create(:shipment, order: order, stock_location: create(:stock_location, id: 9182736))
+    create(:shipment, order: order, stock_location: create(:stock_location, id: 9_182_736))
     visit(current_path)
 
     expect(page).to have_css("table#shipment-history>tbody tr", count: 2)

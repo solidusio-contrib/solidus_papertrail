@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class YamlAdapter
   attr_reader :payload, :klass
 
-  def initialize text, klass
-    @data = YAML.load(text)
+  def initialize(text, klass)
+    @data = YAML.load(text) # rubocop:disable Security/YAMLLoad
     @klass = klass
   end
 

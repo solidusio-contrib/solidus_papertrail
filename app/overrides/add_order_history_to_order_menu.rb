@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Deface::Override.new(
   virtual_path: 'spree/admin/shared/_order_submenu',
   name: 'order_history_menu',
