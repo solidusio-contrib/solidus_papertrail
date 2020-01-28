@@ -1,0 +1,5 @@
+bump:
+  recurse: false
+  file: 'lib/solidus_papertrail/version.rb'
+  message: Bump SolidusPapertrail to %{version}
+  tag: true

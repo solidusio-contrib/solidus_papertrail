@@ -1,38 +1,38 @@
-# coding: utf-8
-lib = File.expand_path('../lib/', __FILE__)
-$:.unshift lib unless $:.include?(lib)
+# frozen_string_literal: true
 
+$:.push File.expand_path('lib', __dir__)
 require 'solidus_papertrail/version'
 
- Gem::Specification.new do |s|
+Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'solidus_papertrail'
   s.version     = SolidusPapertrail::VERSION
   s.summary     = 'Solidus Papertrail integration'
   s.description = 'Views to see Order, Payment and Shipment Papertrail versions'
-  s.required_ruby_version = '>= 1.9.3'
+
+  s.required_ruby_version = '~> 2.4'
 
   s.author    = 'Acid Labs'
   s.email     = 'spree@acid.cl'
-  s.homepage  = 'http://acid.cl'
+  s.homepage  = 'https://github.com/solidusio-contrib/solidus_papertrail'
+  s.license   = 'BSD-3-Clause'
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.require_path  = 'lib'
-  s.requirements << 'none'
+  s.files = Dir.chdir(File.expand_path(__dir__)) do
+    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  end
+  s.test_files = Dir['spec/**/*']
+  s.bindir = "exe"
+  s.executables = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  s.require_paths = ["lib"]
 
-  s.add_dependency 'solidus_backend', [">= 1.0", "< 3"]
-  s.add_dependency 'solidus_support'
-  s.add_dependency 'paper_trail', '~> 7.0'
+  if s.respond_to?(:metadata)
+    s.metadata["homepage_uri"] = s.homepage if s.homepage
+    s.metadata["source_code_uri"] = s.homepage if s.homepage
+  end
 
-  s.add_development_dependency 'capybara', '~> 2.1'
-  s.add_development_dependency 'poltergeist'
-  s.add_development_dependency 'coffee-rails'
-  s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'sass-rails'
-  s.add_development_dependency 'rspec-rails',  '~> 3'
-  s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'simplecov'
-  s.add_development_dependency 'sqlite3'
+  s.add_dependency 'paper_trail', '~> 9.2'
+  s.add_dependency 'solidus_core', ['>= 1.0', '< 3']
+  s.add_dependency 'solidus_support', '~> 0.4.0'
+
+  s.add_development_dependency 'solidus_dev_support'
 end

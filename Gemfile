@@ -1,24 +1,30 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
-gem "solidus", git: 'https://github.com/solidusio/solidus.git', branch: branch
-gem 'solidus_auth_devise', '~> 2.1'
-gem 'deface', '~> 1.3'
+gem 'solidus', github: 'solidusio/solidus', branch: branch
 
-if branch < "v2.5"
-  gem 'factory_bot', '4.10.0', group: :test
+# Needed to help Bundler figure out how to resolve dependencies,
+# otherwise it takes forever to resolve them.
+# See https://github.com/bundler/bundler/issues/6677
+gem 'rails', '>0.a'
+
+# Provides basic authentication functionality for testing parts of your engine
+gem 'solidus_auth_devise'
+
+case ENV['DB']
+when 'mysql'
+  gem 'mysql2'
+when 'postgresql'
+  gem 'pg'
 else
-  gem 'factory_bot', '> 4.10.0', group: :test
-end
-
-if ENV['DB'] == 'mysql'
-  gem 'mysql2', '~> 0.4.10'
-else
-  gem 'pg', '~> 0.21'
-end
-
-group :development, :test do
-  gem 'pry-rails', '~> 0.3.9'
+  gem 'sqlite3'
 end
 
 gemspec
+
+# Use a local Gemfile to include development dependencies that might not be
+# relevant for the project or for other contributors, e.g.: `gem 'pry-debug'`.
+eval_gemfile 'Gemfile-local' if File.exist? 'Gemfile-local'
