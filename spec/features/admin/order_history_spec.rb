@@ -75,7 +75,7 @@ RSpec.feature 'Order History', :type => :feature, js: true do
     create(:shipment, order: order, stock_location: create(:stock_location, id: 9182736))
     visit(current_path)
 
-    expect(page).to have_css("table#shipment-history>tbody tr", count: 2)
+    expect(page).to have_css("table#shipment-history>tbody tr", count: 3)
     expect_hidden_details('9182736', table: '#shipment-history', row: 1, column: 7)
   end
 

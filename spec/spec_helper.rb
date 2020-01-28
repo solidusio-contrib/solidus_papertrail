@@ -1,24 +1,27 @@
 # frozen_string_literal: true
 
-require "simplecov"
-SimpleCov.start "rails"
+# Configure Rails Environment
+ENV['RAILS_ENV'] ||= 'test'
 
-ENV["RAILS_ENV"] ||= "test"
+# Run Coverage report
+require 'solidus_dev_support/rspec/coverage'
 
 require File.expand_path('dummy/config/environment.rb', __dir__)
 
-require "solidus_support/extension/feature_helper"
-require 'spree/testing_support/controller_requests'
-require 'spree/testing_support/capybara_ext'
+# Requires factories and other useful helpers defined in spree_core.
+require 'solidus_dev_support/rspec/feature_helper'
 
-Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each { |f| require f }
+# Requires supporting ruby files with custom matchers and macros, etc,
+# in spec/support/ and its subdirectories.
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 
-FactoryBot.find_definitions
+# Requires factories defined in lib/solidus_papertrail/factories.rb
+require 'solidus_papertrail/factories'
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.raise_errors_for_deprecations!
-
+  config.use_transactional_fixtures = false
   config.example_status_persistence_file_path = "./spec/examples.txt"
 
   config.include Spree::TestingSupport::UrlHelpers

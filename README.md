@@ -1,5 +1,5 @@
 SolidusPapertrail
-===============
+=================
 
 [![CircleCI](https://circleci.com/gh/solidusio-contrib/solidus_papertrail.svg?style=svg)](https://circleci.com/gh/solidusio-contrib/solidus_papertrail)
 
