@@ -1,4 +1,4 @@
-Spree::Admin::OrdersController.class_eval do
+module Spree::Admin::OrdersControllerDecorator
   def versions
     @order = Spree::Order.find_by_number params[:id]
 
@@ -14,9 +14,11 @@ Spree::Admin::OrdersController.class_eval do
     @line_item_versions = VersionsAdapter.create(line_items)
 
     adjustments = @order.all_adjustments.order(updated_at: :desc)
-    @adjustment_versions = VersionsAdapter.create(adjustments)    
+    @adjustment_versions = VersionsAdapter.create(adjustments)
 
     return_authorizations = @order.return_authorizations.order(updated_at: :desc)
     @return_authorization_versions = VersionsAdapter.create(return_authorizations)
   end
+
+  ::Spree::Admin::OrdersController.prepend self
 end

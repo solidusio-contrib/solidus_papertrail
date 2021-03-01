@@ -1,6 +1,9 @@
-module Spree
-  ReturnAuthorization.class_eval do
-    include Spree::Versionable
-    has_paper_trail class_name: 'Spree::ReturnAuthorizationVersion'
+module Spree::ReturnAuthorizationDecorator
+  include Spree::Versionable
+
+  def self.prepended(base)
+    base.has_paper_trail class_name: 'Spree::ReturnAuthorizationVersion'
   end
+
+  Spree::ReturnAuthorization.prepend self
 end
